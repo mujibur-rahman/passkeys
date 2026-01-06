@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Passkeys based login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 24px; max-width: 820px; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+    input { padding: 10px; min-width: 280px; }
+    button { padding: 10px 14px; cursor: pointer; }
+    pre { padding: 12px; background: #f6f6f6; border: 1px solid #ddd; overflow: auto; min-height: 180px; }
+    small { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Passkeys (WebAuthn) - Keyless </h1>
+  <small>
+    Register once, then login with a passkey. Replay protection is enforced by single-use challenges + TTL.
+  </small>
+
+  <div class="row">
+    <label>Username:</label>
+    <input id="username" placeholder="e.g., mujib" autocomplete="username" />
+    <button id="btnRegister">Register passkey</button>
+    <button id="btnLogin">Login with passkey</button>
+    <button id="btnMe">Who am I?</button>
+    <button id="btnLogout">Logout</button>
+  </div>
+
+  <h3>Log</h3>
+  <pre id="log"></pre>
+
+  <script src="/static/webauthn.js"></script>
+</body>
+</html>
