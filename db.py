@@ -1,5 +1,5 @@
 import sqlite3
-from typing import Optional
+from typing import Optional, Tuple
 from config import DB_PATH
 
 def get_db() -> sqlite3.Connection:
@@ -100,7 +100,7 @@ def insert_or_replace_credential(
     public_key_enc: bytes,
     sign_count: int,
     transports_json: str,
-    device_type: str | None,
+    device_type: Optional[str],
     backed_up: bool,
 ) -> None:
     conn = get_db()
@@ -130,7 +130,7 @@ def insert_or_replace_credential(
 def update_credential_sign_count(
     cred_hash: bytes,
     new_sign_count: int,
-    device_type: str | None,
+    device_type: Optional[str],
     backed_up: bool,
 ) -> None:
     conn = get_db()
